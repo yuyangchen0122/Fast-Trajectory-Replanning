@@ -9,8 +9,8 @@ from ezgraphics import GraphicsWindow
 # Make the grid, having the top left and bottom right block set to unblocked and seen
 def setup():
     grid = makeGrid()
-    for i in range(31):
-        for j in range(31):
+    for i in range(101):
+        for j in range(101):
             # Initialize each object
             if (i == 0 and j == 0) or (i == 30 and j == 30):
                 # Cell(x coor, y coor, if_blocked, if_visited)
@@ -22,7 +22,7 @@ def setup():
 
 # Return false for unblocked, true for blocked
 def randomization():
-    temp = np.random.choice([0, 1], 1, p=[0.2, 0.8])
+    temp = np.random.choice([0, 1], 1, p=[0.3, 0.7])
     if temp[0] == 1:
         return False
     return True
@@ -30,7 +30,7 @@ def randomization():
 
 # making a grid as [101][101]
 def makeGrid():
-    grid = [[0 for x in range(31)] for y in range(31)]
+    grid = [[0 for x in range(101)] for y in range(101)]
     return grid
 
 
@@ -44,8 +44,8 @@ def draw(windowSize=1050, off=50):
     grid = setup()
     # start
 
-    for i in range(31):  # Note that i ranges from 0 through 7, inclusive.
-        for j in range(31):  # So does j.
+    for i in range(101):  # Note that i ranges from 0 through 7, inclusive.
+        for j in range(101):  # So does j.
             cell = grid[i][j]
             if not cell.ifBlocked:
                 color = 'white'
