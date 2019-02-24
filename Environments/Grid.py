@@ -43,8 +43,8 @@ def makeGrid():
 
 
 def draw(windowSize=1050, off=50):
-    win = GraphicsWindow(windowSize, windowSize)
-    canvas = win.canvas()
+    window = GraphicsWindow(windowSize, windowSize)
+    canvas = window.canvas()
     offset_x = off  # Distance from left edge.
     offset_y = off  # Distance from top.
     cell_size = off  # Height and width of checkerboard squares.
