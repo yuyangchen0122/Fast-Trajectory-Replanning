@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63b85a6e-3261-4d58-9950-c0c3c9cb7aa9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Environments/Grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/Environments/Grid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CellsInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/CellsInfo.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Environments/Grid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="68" column="10" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
+            <state relative-caret-position="480">
+              <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -24,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CellsInfo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1797">
-              <caret line="144" column="34" lean-forward="true" selection-start-line="144" selection-start-column="34" selection-end-line="144" selection-end-column="34" />
+            <state relative-caret-position="255">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -47,6 +48,8 @@
       <find>3</find>
       <find>31</find>
       <find>__</find>
+      <find>addF</find>
+      <find>add</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -57,8 +60,8 @@
       <list>
         <option value="$PROJECT_DIR$/FastTrajectoryReplanning.py" />
         <option value="$PROJECT_DIR$/assignment1.py" />
-        <option value="$PROJECT_DIR$/CellsInfo.py" />
         <option value="$PROJECT_DIR$/Environments/Grid.py" />
+        <option value="$PROJECT_DIR$/CellsInfo.py" />
       </list>
     </option>
   </component>
@@ -107,7 +110,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Grid">
+  <component name="RunManager" selected="Python.CellsInfo">
     <configuration name="CellsInfo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Fast-Trajectory-Replanning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -152,8 +155,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Grid" />
         <item itemvalue="Python.CellsInfo" />
+        <item itemvalue="Python.Grid" />
       </list>
     </recent_temporary>
   </component>
@@ -172,14 +175,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="826" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14446793" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14446793" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32970026" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32970026" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -196,20 +198,20 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/assignment1.py" />
     <entry file="file://$PROJECT_DIR$/FastTrajectoryReplanning.py" />
-    <entry file="file://$PROJECT_DIR$/CellsInfo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1797">
-          <caret line="144" column="34" lean-forward="true" selection-start-line="144" selection-start-column="34" selection-end-line="144" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Environments/Grid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="68" column="10" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
+        <state relative-caret-position="480">
+          <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CellsInfo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>

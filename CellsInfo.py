@@ -29,11 +29,11 @@ class node:
 
     def __lt__(self, other, c=100 * 100):
         # define a new rule to make comparison based on the f value of two cells
-        return (self.g + self.h < other.g + other.h) or \
-               (self.g + self.h == other.g + other.h and \
+        return (self.g + self.h < other.g + other.h) or\
+               (self.g + self.h == other.g + other.h and
                 c * (self.g + self.h) - self.g < c * (other.g + other.h) - other.g)
 
-    def addFront(self, node):
+    def add_front(self, node):
         restlist = self.next
         self.next = node
         node.next = restlist
