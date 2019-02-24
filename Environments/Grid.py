@@ -1,5 +1,6 @@
 import numpy as np
 from ezgraphics import GraphicsWindow
+import random
 
 '''
     Basic setup before start, not in use right now
@@ -9,21 +10,28 @@ from ezgraphics import GraphicsWindow
 # Make the grid, having the top left and bottom right block set to unblocked and seen
 def setup():
     grid = makeGrid()
-    for i in range(101):
-        for j in range(101):
-            # Initialize each object
-            if (i == 0 and j == 0) or (i == 30 and j == 30):
-                # Cell(x coor, y coor, if_blocked, if_visited)
-                grid[i][j] = Cell(i, j, False, True)
-            else:
-                grid[i][j] = Cell(i, j, randomization())
+    starting_x = random.randint(0, 100)
+    starting_y = random.randint(0, 100)
+    target_x = random.randint(0, 100)
+    target_y = random.randint(0, 100)
+    if (starting_x == target_x and starting_y == target_y):
+        return False
+    else:
+        for i in range(101):
+            for j in range(101):
+                # Initialize each object
+                if (i == starting_x and j == starting_y) or (i == target_x and j == target_y):
+                    # Cell(x coor, y coor, if_blocked, if_visited)
+                    grid[i][j] = Cell(i, j, False, True)
+                else:
+                    grid[i][j] = Cell(i, j, randomization())
     return grid
 
 
 # Return false for unblocked, true for blocked
 def randomization():
-    temp = np.random.choice([0, 1], 1, p=[0.3, 0.7])
-    if temp[0] == 1:
+    check_blocked = np.random.choice([0, 1], 1, p=[0.3, 0.7])
+    if check_blocked[0] == 1:
         return False
     return True
 
