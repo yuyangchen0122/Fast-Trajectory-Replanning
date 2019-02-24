@@ -66,7 +66,7 @@ def draw(windowSize=1050, off=50):
             # draw cell_size * cell_size rectangle at point (offset_x + i * cell_size, offset_y + j * cell_size)
             canvas.drawRect(offset_x + i * cell_size, offset_y + j * cell_size,
                             cell_size, cell_size)
-    win.wait()
+    window.wait()
 
 
 class Cell:
