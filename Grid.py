@@ -6,14 +6,16 @@ import random
     Basic setup before start, not in use right now
 '''
 
+starting_x = random.randint(0, 100)
+starting_y = random.randint(0, 100)
+
+target_x = random.randint(0, 100)
+target_y = random.randint(0, 100)
+
 
 # Make the grid, having the top left and bottom right block set to unblocked and seen
 def setup():
     grid = makeGrid()
-    starting_x = random.randint(0, 100)
-    starting_y = random.randint(0, 100)
-    target_x = random.randint(0, 100)
-    target_y = random.randint(0, 100)
     if (starting_x == target_x and starting_y == target_y):
         return False
     else:
@@ -24,12 +26,12 @@ def setup():
                     # Cell(x coor, y coor, if_blocked, if_visited)
                     grid[i][j] = Cell(i, j, False, True)
                 else:
-                    grid[i][j] = Cell(i, j, randomization())
+                    grid[i][j] = Cell(i, j, random_blocked())
     return grid
 
 
 # Return false for unblocked, true for blocked
-def randomization():
+def random_blocked():
     check_blocked = np.random.choice([0, 1], 1, p=[0.3, 0.7])
     if check_blocked[0] == 1:
         return False
@@ -42,7 +44,7 @@ def makeGrid():
     return grid
 
 
-def draw(windowSize=1050, off=50):
+def draw(windowSize=1080, off=10):
     window = GraphicsWindow(windowSize, windowSize)
     canvas = window.canvas()
     offset_x = off  # Distance from left edge.
@@ -70,11 +72,11 @@ def draw(windowSize=1050, off=50):
 
 
 class Cell:
-    def __init__(self, xPos, yPos, if_blocked, ifVisited=False):
-        self.x = xPos
-        self.y = yPos
+    def __init__(self, x_axis, y_axis, if_blocked, if_visited=False):
+        self.x = x_axis
+        self.y = y_axis
         self.ifBlocked = if_blocked
-        self.visited = ifVisited
+        self.ifVisited = if_visited
 
     def visit(self):
         self.ifVisited = True

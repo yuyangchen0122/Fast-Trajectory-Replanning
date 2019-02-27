@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63b85a6e-3261-4d58-9950-c0c3c9cb7aa9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/RepeatedBackwardA*.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RepeatedForwardA*.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClassForAdaptive.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Latex/structure.log" beforeDir="false" afterPath="$PROJECT_DIR$/Latex/structure.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adaptive_Backward.py" beforeDir="false" afterPath="$PROJECT_DIR$/Adaptive_Backward.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adaptive_Forward.py" beforeDir="false" afterPath="$PROJECT_DIR$/Adaptive_Forward.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CellsInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/ClassForRepeated.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepeatedBackwardA*.py" beforeDir="false" afterPath="$PROJECT_DIR$/RepeatedBackwardA*.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RepeatedForwardA*.py" beforeDir="false" afterPath="$PROJECT_DIR$/RepeatedForwardA*.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,10 +20,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Environments/Grid.py">
+        <entry file="file://$PROJECT_DIR$/Grid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1155">
-              <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+            <state relative-caret-position="139">
+              <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -27,20 +31,47 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RepeatedForwardA*.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="9" lean-forward="true" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+            <state relative-caret-position="139">
+              <caret line="264" column="55" selection-start-line="264" selection-start-column="55" selection-end-line="264" selection-end-column="55" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CellsInfo.py">
+        <entry file="file://$PROJECT_DIR$/Adaptive_Forward.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="35" column="17" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="17" />
+            <state relative-caret-position="154">
+              <caret line="431" column="38" selection-start-line="431" selection-start-column="38" selection-end-line="431" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Adaptive_Backward.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="79">
+              <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ClassForRepeated.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="139">
+              <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -48,11 +79,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RepeatedBackwardA*.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="275" column="24" lean-forward="true" selection-start-line="275" selection-start-column="24" selection-end-line="275" selection-end-column="24" />
+            <state relative-caret-position="139">
+              <caret line="45" column="12" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ClassForAdaptive.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="29" lean-forward="true" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -68,26 +108,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>3</find>
-      <find>31</find>
-      <find>__</find>
-      <find>add_front</find>
-      <find>maze</find>
-      <find>setup_</find>
-      <find>101</find>
-      <find>starting_x</find>
-      <find>map_info</find>
-      <find>size</find>
-      <find>GraphicsWindow</find>
-      <find>final</find>
-      <find>0</find>
-      <find>add_Front</find>
-      <find>addFront</find>
-      <find>addF</find>
-      <find>add</find>
-      <find>final_</find>
-      <find>add_</find>
       <find>add_F</find>
+      <find>visited</find>
+      <find>add_</find>
+      <find>0.2</find>
+      <find>map_info</find>
+      <find>target</find>
+      <find>s_start</find>
+      <find>s_s</find>
+      <find>setup_info</find>
+      <find>setup_node</find>
+      <find>s</find>
+      <find>surround</find>
+      <find>surr</find>
+      <find>update</find>
+      <find>starting_X</find>
+      <find>print</find>
+      <find>max</find>
+      <find>starting</find>
+      <find>size</find>
+      <find>list</find>
+      <find>randomization</find>
+      <find>close_open_list</find>
+      <find>closed_</find>
+      <find>open</find>
+      <find>start.</find>
+      <find>origin</find>
+      <find>start</find>
+      <find>end</find>
+      <find>pos</find>
+      <find>snode</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -105,15 +155,20 @@
         <option value="$PROJECT_DIR$/Repeated_Backward_A*.py" />
         <option value="$PROJECT_DIR$/Adaptive A*.py" />
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/RepeatedForwardA*.py" />
+        <option value="$PROJECT_DIR$/ClassForRepeated.py" />
+        <option value="$PROJECT_DIR$/ClassForAdaptive.py" />
+        <option value="$PROJECT_DIR$/Grid.py" />
         <option value="$PROJECT_DIR$/RepeatedBackwardA*.py" />
+        <option value="$PROJECT_DIR$/Adaptive_Backward.py" />
+        <option value="$PROJECT_DIR$/Adaptive_Forward.py" />
+        <option value="$PROJECT_DIR$/RepeatedForwardA*.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="827" />
+    <option name="width" value="720" />
+    <option name="height" value="826" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -127,11 +182,6 @@
             <path>
               <item name="Fast-Trajectory-Replanning" type="b2602c69:ProjectViewProjectNode" />
               <item name="Fast-Trajectory-Replanning" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Fast-Trajectory-Replanning" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Fast-Trajectory-Replanning" type="462c0819:PsiDirectoryNode" />
-              <item name="Environments" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -160,7 +210,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.RepeatedForwardA*">
+  <component name="RunManager" selected="Python.RepeatedBackwardA*">
+    <configuration name="Adaptive_Forward" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Fast-Trajectory-Replanning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Adaptive_Forward.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="CellsInfo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Fast-Trajectory-Replanning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -173,7 +244,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CellsInfo.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ClassForRepeated.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -190,7 +261,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Environments" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -245,34 +316,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Fast-Trajectory-Replanning" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.RepeatedForwardA*" />
         <item itemvalue="Python.RepeatedBackwardA*" />
-        <item itemvalue="Python.CellsInfo" />
+        <item itemvalue="Python.Adaptive_Forward" />
+        <item itemvalue="Python.RepeatedForwardA*" />
         <item itemvalue="Python.Grid" />
-        <item itemvalue="Python.test" />
+        <item itemvalue="Python.CellsInfo" />
       </list>
     </recent_temporary>
   </component>
@@ -290,15 +340,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="828" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="826" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.062015504" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14517266" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32744566" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32833788" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39918256" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -356,37 +406,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Environments/Grid.py">
+    <entry file="file://$PROJECT_DIR$/RepeatedForwardA*.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+        <state relative-caret-position="139">
+          <caret line="264" column="55" selection-start-line="264" selection-start-column="55" selection-end-line="264" selection-end-column="55" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CellsInfo.py">
+    <entry file="file://$PROJECT_DIR$/Adaptive_Forward.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="35" column="17" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="17" />
+        <state relative-caret-position="154">
+          <caret line="431" column="38" selection-start-line="431" selection-start-column="38" selection-end-line="431" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Adaptive_Backward.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RepeatedBackwardA*.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="275" column="24" lean-forward="true" selection-start-line="275" selection-start-column="24" selection-end-line="275" selection-end-column="24" />
+        <state relative-caret-position="139">
+          <caret line="45" column="12" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RepeatedForwardA*.py">
+    <entry file="file://$PROJECT_DIR$/Grid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="9" lean-forward="true" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+        <state relative-caret-position="139">
+          <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClassForRepeated.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClassForAdaptive.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="29" lean-forward="true" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
         </state>
       </provider>
     </entry>

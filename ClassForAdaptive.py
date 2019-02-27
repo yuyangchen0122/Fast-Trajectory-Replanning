@@ -1,12 +1,12 @@
 class Cell:
-    def __init__(self, xPos, yPos, if_blocked, ifVisited=False):
-        self.x = xPos
-        self.y = yPos
+    def __init__(self, x_axis, y_axis, if_blocked, if_visited=False):
+        self.x = x_axis
+        self.y = y_axis
         self.ifBlocked = if_blocked
-        self.visited = ifVisited
+        self.ifVisited = if_visited
 
     def visit(self):
-        self.visited = True
+        self.ifVisited = True
 
 
 '''
@@ -21,6 +21,7 @@ class node:
         self.x = 0
         self.y = 0
         self.h = 0
+        self.nh = -1
         self.g = 0
         self.search = 0
         self.parent = None
@@ -34,9 +35,9 @@ class node:
                 c * (self.g + self.h) - self.g < c * (other.g + other.h) - other.g)
 
     def add_front(self, node):
-        restlist = self.next
+        list = self.next
         self.next = node
-        node.next = restlist
+        node.next = list
 
 
 class point:
@@ -48,11 +49,11 @@ class point:
 
     def push(self, x, y):
         new = point(x, y)
-        restlist = self.next
+        list = self.next
         self.next = new
-        new.next = restlist
-        if (restlist != None):
-            restlist.parent = new
+        new.next = list
+        if (list != None):
+            list.parent = new
 
 
 class MinHeap:
