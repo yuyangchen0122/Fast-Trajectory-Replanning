@@ -62,85 +62,84 @@ or already in the open list which won't need to be modified.
 
 
 def update_neighbour_node(Maze, Mazeinfor, current_node, s_goal, Queue, open_closed_list):
-    xcoor = current_node.x
-    ycoor = current_node.y
+    current_x = current_node.x
+    current_y = current_node.y
     global counter
-    # update right successor
+    # update right neighbor_node
 
-    if (isValid(xcoor + 1, ycoor) and (not open_closed_list[xcoor + 1][ycoor])):
-        open_closed_list[xcoor + 1][ycoor] = True
-        if (not isinstance(Mazeinfor[xcoor + 1][ycoor], node)):
-            Mazeinfor[xcoor + 1][ycoor] = node()
-        successor = Mazeinfor[xcoor + 1][ycoor]
-        if (not successor.isBlocked):
-            successor.parent = current_node
-            successor.g = current_node.g + 1
-            successor.x = xcoor + 1
-            successor.y = ycoor
-            successor.h = Manhattan(successor, s_goal)
-            MinHeap.push(Queue, successor)
+    if (isValid(current_x + 1, current_y) and (not open_closed_list[current_x + 1][current_y])):
+        open_closed_list[current_x + 1][current_y] = True
+        if (not isinstance(Mazeinfor[current_x + 1][current_y], node)):
+            Mazeinfor[current_x + 1][current_y] = node()
+        neighbor_node = Mazeinfor[current_x + 1][current_y]
+        if (not neighbor_node.isBlocked):
+            neighbor_node.parent = current_node
+            neighbor_node.g = current_node.g + 1
+            neighbor_node.x = current_x + 1
+            neighbor_node.y = current_y
+            neighbor_node.h = Manhattan(neighbor_node, s_goal)
+            MinHeap.push(Queue, neighbor_node)
             counter += 1
-    # print("push point {} {}".format(xcoor + 1, ycoor))
+    # print("push point {} {}".format(current_x + 1, current_y))
 
-    # update left successor
-    if (isValid(xcoor - 1, ycoor) and (not open_closed_list[xcoor - 1][ycoor])):
-        open_closed_list[xcoor - 1][ycoor] = True
+    # update left neighbor_node
+    if (isValid(current_x - 1, current_y) and (not open_closed_list[current_x - 1][current_y])):
+        open_closed_list[current_x - 1][current_y] = True
         # this is equal to check if succ(s, a) < counter
-        if (not isinstance(Mazeinfor[xcoor - 1][ycoor], node)):
-            Mazeinfor[xcoor - 1][ycoor] = node()
-        successor = Mazeinfor[xcoor - 1][ycoor]
-        if (not successor.isBlocked):
-            successor.parent = current_node
-            successor.g = current_node.g + 1
-            successor.x = xcoor - 1
-            successor.y = ycoor
-            successor.h = Manhattan(successor, s_goal)
-            MinHeap.push(Queue, successor)
+        if (not isinstance(Mazeinfor[current_x - 1][current_y], node)):
+            Mazeinfor[current_x - 1][current_y] = node()
+        neighbor_node = Mazeinfor[current_x - 1][current_y]
+        if (not neighbor_node.isBlocked):
+            neighbor_node.parent = current_node
+            neighbor_node.g = current_node.g + 1
+            neighbor_node.x = current_x - 1
+            neighbor_node.y = current_y
+            neighbor_node.h = Manhattan(neighbor_node, s_goal)
+            MinHeap.push(Queue, neighbor_node)
             counter += 1
 
-    # print("push point {} {}".format(xcoor - 1, ycoor))
+    # print("push point {} {}".format(current_x - 1, current_y))
 
-    # update downward successor
-    if (isValid(xcoor, ycoor - 1) and (not open_closed_list[xcoor][ycoor - 1])):
-        open_closed_list[xcoor][ycoor - 1] = True
-        if (not isinstance(Mazeinfor[xcoor][ycoor - 1], node)):
-            Mazeinfor[xcoor][ycoor - 1] = node()
-        successor = Mazeinfor[xcoor][ycoor - 1]
-        if (not successor.isBlocked):
-            successor.parent = current_node
-            successor.g = current_node.g + 1
-            successor.x = xcoor
-            successor.y = ycoor - 1
-            successor.h = Manhattan(successor, s_goal)
-            MinHeap.push(Queue, successor)
+    # update downward neighbor_node
+    if (isValid(current_x, current_y - 1) and (not open_closed_list[current_x][current_y - 1])):
+        open_closed_list[current_x][current_y - 1] = True
+        if (not isinstance(Mazeinfor[current_x][current_y - 1], node)):
+            Mazeinfor[current_x][current_y - 1] = node()
+        neighbor_node = Mazeinfor[current_x][current_y - 1]
+        if (not neighbor_node.isBlocked):
+            neighbor_node.parent = current_node
+            neighbor_node.g = current_node.g + 1
+            neighbor_node.x = current_x
+            neighbor_node.y = current_y - 1
+            neighbor_node.h = Manhattan(neighbor_node, s_goal)
+            MinHeap.push(Queue, neighbor_node)
             counter += 1
-    # print("push point {} {}".format(xcoor, ycoor - 1))
+    # print("push point {} {}".format(current_x, current_y - 1))
 
-    # update upward successor
-    if (isValid(xcoor, ycoor + 1) and (not open_closed_list[xcoor][ycoor + 1])):
-        open_closed_list[xcoor][ycoor + 1] = True
-        if (not isinstance(Mazeinfor[xcoor][ycoor + 1], node)):
-            Mazeinfor[xcoor][ycoor + 1] = node()
-        successor = Mazeinfor[xcoor][ycoor + 1]
-        if (not successor.isBlocked):
-            successor.parent = current_node
-            successor.g = current_node.g + 1
-            successor.x = xcoor
-            successor.y = ycoor + 1
-            successor.h = Manhattan(successor, s_goal)
-            MinHeap.push(Queue, successor)
+    # update upward neighbor_node
+    if (isValid(current_x, current_y + 1) and (not open_closed_list[current_x][current_y + 1])):
+        open_closed_list[current_x][current_y + 1] = True
+        if (not isinstance(Mazeinfor[current_x][current_y + 1], node)):
+            Mazeinfor[current_x][current_y + 1] = node()
+        neighbor_node = Mazeinfor[current_x][current_y + 1]
+        if (not neighbor_node.isBlocked):
+            neighbor_node.parent = current_node
+            neighbor_node.g = current_node.g + 1
+            neighbor_node.x = current_x
+            neighbor_node.y = current_y + 1
+            neighbor_node.h = Manhattan(neighbor_node, s_goal)
+            MinHeap.push(Queue, neighbor_node)
             counter += 1
-    # print("push point {} {}".format(xcoor, ycoor + 1))
+    # print("push point {} {}".format(current_x, current_y + 1))
     return
 
 
-# Make the grid, having the top left and bottom right block set to unblocked and seen
-def setup():
+# Make the grid, having the random origin and destination block set to unblocked and seendef setup():
     grid = makeGrid()
     for i in range(maze_size):
         for j in range(maze_size):
             # Initialize each object
-            if (i == starting_x and starting_y == 0) or (i == target_x and j == target_y):
+            if (i == starting_x and j == starting_y) or (i == target_x and j == target_y):
                 # Cell(x coor, y coor, if_blocked, if_visited)
                 grid[i][j] = Cell(i, j, False, True)
             else:
@@ -161,33 +160,33 @@ def setup():
 
 
 def detect(s, maze, Mazeinfor):
-    xcoor = s.x
-    ycoor = s.y
-    # print("locate at [{} {}]".format(xcoor, ycoor))
-    if (isValid(xcoor - 1, ycoor)):
+    current_x = s.x
+    current_y = s.y
+    # print("locate at [{} {}]".format(current_x, current_y))
+    if (isValid(current_x - 1, current_y)):
         # this is equal to check if succ(s, a) < counter
-        if (not isinstance(Mazeinfor[xcoor - 1][ycoor], node)):
-            Mazeinfor[xcoor - 1][ycoor] = node()
-        successor = Mazeinfor[xcoor - 1][ycoor]
-        successor.isBlocked = maze[xcoor - 1][ycoor].ifBlocked
+        if (not isinstance(Mazeinfor[current_x - 1][current_y], node)):
+            Mazeinfor[current_x - 1][current_y] = node()
+        neighbor_node = Mazeinfor[current_x - 1][current_y]
+        neighbor_node.isBlocked = maze[current_x - 1][current_y].ifBlocked
 
-    if (isValid(xcoor + 1, ycoor)):
-        if (not isinstance(Mazeinfor[xcoor + 1][ycoor], node)):
-            Mazeinfor[xcoor + 1][ycoor] = node()
-        successor = Mazeinfor[xcoor + 1][ycoor]
-        successor.isBlocked = maze[xcoor + 1][ycoor].ifBlocked
+    if (isValid(current_x + 1, current_y)):
+        if (not isinstance(Mazeinfor[current_x + 1][current_y], node)):
+            Mazeinfor[current_x + 1][current_y] = node()
+        neighbor_node = Mazeinfor[current_x + 1][current_y]
+        neighbor_node.isBlocked = maze[current_x + 1][current_y].ifBlocked
 
-    if (isValid(xcoor, ycoor - 1)):
-        if (not isinstance(Mazeinfor[xcoor][ycoor - 1], node)):
-            Mazeinfor[xcoor][ycoor - 1] = node()
-        successor = Mazeinfor[xcoor][ycoor - 1]
-        successor.isBlocked = maze[xcoor][ycoor - 1].ifBlocked
+    if (isValid(current_x, current_y - 1)):
+        if (not isinstance(Mazeinfor[current_x][current_y - 1], node)):
+            Mazeinfor[current_x][current_y - 1] = node()
+        neighbor_node = Mazeinfor[current_x][current_y - 1]
+        neighbor_node.isBlocked = maze[current_x][current_y - 1].ifBlocked
 
-    if (isValid(xcoor, ycoor + 1)):
-        if (not isinstance(Mazeinfor[xcoor][ycoor + 1], node)):
-            Mazeinfor[xcoor][ycoor + 1] = node()
-        successor = Mazeinfor[xcoor][ycoor + 1]
-        successor.isBlocked = maze[xcoor][ycoor + 1].ifBlocked
+    if (isValid(current_x, current_y + 1)):
+        if (not isinstance(Mazeinfor[current_x][current_y + 1], node)):
+            Mazeinfor[current_x][current_y + 1] = node()
+        neighbor_node = Mazeinfor[current_x][current_y + 1]
+        neighbor_node.isBlocked = maze[current_x][current_y + 1].ifBlocked
 
     return
 
@@ -206,7 +205,7 @@ def makeGrid():
     return grid
 
 
-def draw(maze, path_list, off=10):
+def draw(maze, path_list, off=7):
     win = GraphicsWindow(maze_size * off * 1.2, maze_size * off * 1.2)
     canvas = win.canvas()
     cell_size = off  # Height and width of checkerboard squares.
@@ -229,15 +228,15 @@ def draw(maze, path_list, off=10):
         ptr = ptr.next
 
     while (ptr != None):
-        xcoor = ptr.x
-        ycoor = ptr.y
+        current_x = ptr.x
+        current_y = ptr.y
         canvas.setFill('red')
 
-        canvas.drawOval(off + xcoor * cell_size + cell_size * .2, off + ycoor * cell_size + cell_size * .2,
+        canvas.drawOval(off + current_x * cell_size + cell_size * .2, off + current_y * cell_size + cell_size * .2,
                         cell_size * .6, cell_size * .6)
 
-        # canvas.drawRect(off + xcoor * cell_size, off + ycoor * cell_size, cell_size, cell_size)
-        # print("path at [{} {}]".format(xcoor, ycoor))
+        # canvas.drawRect(off + current_x * cell_size, off + current_y * cell_size, cell_size, cell_size)
+        # print("path at [{} {}]".format(current_x, current_y))
         ptr = ptr.parent
 
     win.wait()
@@ -259,12 +258,12 @@ def ComputePath(Maze, Mazeinfor, s_goal, Queue, open_closed_list):
         '''
         current_node = MinHeap.pop(Queue)
         # print("pop point {} {}".format(current_node.x, current_node.y))
-        xcoor = current_node.x
-        ycoor = current_node.y
-        open_closed_list[xcoor][ycoor] = True
+        current_x = current_node.x
+        current_y = current_node.y
+        open_closed_list[current_x][current_y] = True
         if (current_node.x == s_goal.x and current_node.y == s_goal.y):
             return
-        # update s's successors, executing step 5 to 13
+        # update s's neighbor_nodes, executing step 5 to 13
         update_neighbour_node(Maze, Mazeinfor, current_node, s_goal, Queue, open_closed_list)
 
 
