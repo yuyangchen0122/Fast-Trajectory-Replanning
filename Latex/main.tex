@@ -192,8 +192,28 @@ the same f-value in favor of cells with larger g-values and remaining ties in an
 %------------------------------------------------
 
 Answer: \newline
-\par After implementing tie-breaking in regards to the g-value, we ran our project 50 times for Repeated Forward A* and compared the average run time. In our A* code, implementation of tie-breaking begins around line 34 in "classinfor".
-Here are the run-times:
+\textbf{Repeated Forward A*:}
+{\obeylines\obeyspaces
+\texttt{
+\input{RepeatedForwardOutput.txt}
+}}
+\textbf{Repeated Forward A*: Average run time = 0.3089696089426676}
+\newline
+\textbf{Repeated Forward A*: Average expanded node = 3959.15555556}
+\newline
+\newline
+\textbf{Repeated Backward A*:}
+{\obeylines\obeyspaces
+\texttt{
+\input{RepeatedBackwardOutput.txt}
+}}
+\textbf{Repeated Backward A*: Average run time = 0.3506512123605479}
+\newline
+\textbf{Repeated Backward A*: Average expanded node = 176390.76087}
+\par Obersvation : After comparing the run time and the number of expanded node of Repeated Forward and Backward, we can easily find that Repeated Forward A* ran faster than Backward A.
+\newline
+Explanation: 
+
 %----------------------------------------------------------------------------------------
 %	Part 4 - Heuristics in the Adaptive A*
 %----------------------------------------------------------------------------------------
@@ -210,14 +230,31 @@ leaves initially consistent h-values consistent even if action costs can increas
 %------------------------------------------------
 
 Answer: \newline
-\par After implementing tie-breaking in regards to the g-value, we ran our project 50 times for Repeated Forward A* and compared the average run time. In our A* code, implementation of tie-breaking begins around line 34 in "classinfor".
-Here are the run-times:
+\textbf{Repeated Forward A*:}
+{\obeylines\obeyspaces
+\texttt{
+\input{RepeatedForwardOutput.txt}
+}}
+\textbf{Repeated Forward A*: Average run time = 0.3089696089426676}
+\newline
+\textbf{Repeated Forward A*: Average expanded node = 3959.15555556}
+\newline
+\newline
+\textbf{Repeated Backward A*:}
+{\obeylines\obeyspaces
+\texttt{
+\input{RepeatedBackwardOutput.txt}
+}}
+\textbf{Repeated Backward A*: Average run time = 0.3506512123605479}
+\newline
+\textbf{Repeated Backward A*: Average expanded node = 176390.76087}
+\par 
 
 %----------------------------------------------------------------------------------------
 %	Part 5 - Heuristics in the Adaptive A*
 %----------------------------------------------------------------------------------------
 
-\section{Part 4 - Heuristics in the Adaptive A*}
+\section{Part 5 - Heuristics in the Adaptive A*}
 
 Implement and compare Repeated Forward A* and Adaptive A*
 with respect to their runtime. Explain your observations in detail, that is, explain what you observed and give a reason for
@@ -228,8 +265,8 @@ g-values and remaining ties in an identical way, for example randomly.
 %------------------------------------------------
 
 Answer: \newline
-\par After implementing tie-breaking in regards to the g-value, we ran our project 50 times for Repeated Forward A* and compared the average run time. In our A* code, implementation of tie-breaking begins around line 34 in "classinfor".
-Here are the run-times:
+
+\par 
 
 %----------------------------------------------------------------------------------------
 %	Part 6 - Memory Issues

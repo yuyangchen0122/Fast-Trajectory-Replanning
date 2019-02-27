@@ -4,6 +4,7 @@ import numpy as np
 from ClassForRepeated import *
 import time
 import random
+import gc
 
 maze_size = 101
 
@@ -12,6 +13,10 @@ starting_y = random.randint(0, 100)
 
 target_x = random.randint(0, 100)
 target_y = random.randint(0, 100)
+
+class time1:
+    average_time = 0
+    valid_count = 0
 
 # initialize the information matrix
 def setup_node():
@@ -37,29 +42,6 @@ def setup_node():
 
 def isValid(x, y):
     return ((x >= 0) and (x < maze_size) and (y >= 0) and (y < maze_size))
-
-
-'''
-update the surrounding node of the current node s
-It takes 3 parameters: 
-Mazeinfor: the information matrix
-current_node: the current stage node
-counter: the iteration time of the A* search
-Notice:
-currently I don't think we need to check counter, because I think there
-is no conditon in which g(succ(s, a) would be not bigger than g(s) + c(s, a)
-Please tell me if I am wrong, because I am probably wrong
-'''
-
-'''
-Important!!!!
-declaration about why don't need to set g value to infinity:
-because the cost always has a constant 1.
-The close list and the open list can be merge into one list: open_closed_list,
-because any node's g value that already in the open list don't need to be further updated
-if location (x, y) in open_closed_list has value true, it is either in the close list,
-or already in the open list which won't need to be modified.
-'''
 
 
 def update_neighbour_node(Maze, Mazeinfor, current_node, s_goal, Queue, open_closed_list):
@@ -146,19 +128,8 @@ def setup():
                 grid[i][j] = Cell(i, j, False, True)
             else:
                 grid[i][j] = Cell(i, j, random_blocked())
-            # grid[100][89] = Cell(100, 89, True, False)
-            # grid[99][89] = Cell(99, 89, True, False)
-            # grid[98][89] = Cell(98, 89, True, False)
-            # grid[97][89] = Cell(97, 89, True, False)
 
     return grid
-
-
-'''
-	detect function mimic the sensor detection, to be more specific, 
-	suppose the agent standing at the stage s, using the real word information
-	maze to update the surrounding information to map_node_info 
-'''
 
 
 def detect(s, maze, Mazeinfor):
@@ -248,13 +219,7 @@ def Manhattan(origin, goal):
 def ComputePath(Maze, Mazeinfor, s_goal, Queue, open_closed_list):
     # check whether queue is empty
     while (len(Queue) > 0):
-        '''
-        for i in range(len(Queue)):
-            n = Queue._MinHeap__heap[i]
-            print("[{} {} {} {}] ".format(n.x, n.y, n.g, n.g + n.h), destination = "")
-        print(" ")
-        print(" ")
-        '''
+
         current_node = MinHeap.pop(Queue)
         # print("pop point {} {}".format(current_node.x, current_node.y))
         current_x = current_node.x
@@ -276,13 +241,6 @@ def traceback(map_node_info, s_goal):
 
     tracklist.add_front(ptr)
     return tracklist.next
-
-
-'''
-traceback function serves to record the current ideal path that the agent 
-estimate from the current position to the destination
-In the form of a linked list
-'''
 
 
 def final_trace(map_node_info, s_goal):
@@ -347,43 +305,43 @@ def main():
 
         # print("push point {} {}".format(s_start.x, s_start.y))
 
-        '''
-        track record the current idea path from current start goal to the final goal
-        '''
         ComputePath(maze, map_node_info, s_start, openlist, open_closed_list)
         if len(openlist) == 0:
             print("I cannot reach the target.")
-            return
+            return "NaN"
 
-        '''
-        while(ptr != None):
-            print('track is [{} {}]'.format(ptr.x, ptr.y), end=' ')
-            ptr = ptr.next
-        '''
+
         s_start = take_action(s_start, maze, map_node_info, path)
         # print("move to point [{} {}]".format(s_start.x, s_start.y))
     # print("current path end is [{} {}]".format(path_ptr.x, path_ptr.y))
     # print("goal point is [{} {}]".format(s_goal.x, s_goal.y))
 
-    '''
-        follow the tree pointers from s_goal to s_start, use a linkedlist to record
-        the path, and then move the agent to the goal stage
-    '''
     # final_track = final_trace(map_node_info, s_goal)
     ptr = path.next
-    '''
-    while ptr != None:
-        print("path is [{} {}]".format(ptr.x, ptr.y), end = " ")
-        ptr = ptr.next
-    '''
+
     destination = time.time()
     print("Time:", destination - origin)
-    draw(maze, path)
+    # draw(maze, path)
 
-    return
+    time1.valid_count += 1
+    time1.average_time += (destination - origin)
+    return (str(destination - origin))
 
 
 if __name__ == "__main__":
     counter = 0
-    main()
-    print("repeated backward expand node: {}".format(counter))
+    with open('RepeatedBackwardOutput.txt', 'w') as file:
+        for i in range(0, 50):
+            x = main()
+            gc.collect()
+            print("repeated backward expand node: {}".format(counter))
+            file.write("Time: " + x + " " + "Expanded node: " + format(counter) + "\n")
+    file.close()
+
+
+    time1.average_time = time1.average_time/ time1.valid_count
+    print("average time", time1.average_time)
+# if __name__ == "__main__":
+#     counter = 0
+#     main()
+#     print("repeated backward expand node: {}".format(counter))

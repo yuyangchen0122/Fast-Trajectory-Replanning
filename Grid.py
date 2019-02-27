@@ -2,10 +2,6 @@ import numpy as np
 from ezgraphics import GraphicsWindow
 import random
 
-'''
-    Basic setup before start, not in use right now
-'''
-
 starting_x = random.randint(0, 100)
 starting_y = random.randint(0, 100)
 

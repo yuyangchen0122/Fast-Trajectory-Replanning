@@ -198,13 +198,7 @@ def ComputePath_A(Maze, Mazeinfor, s_goal, Queue, open_closed_list, visited_list
     # check whether queue is empty
     while (len(Queue) > 0):
         # print(len(Queue))
-        '''
-        for i in range(len(Queue)):
-            n = Queue._MinHeap__heap[i]
-            print("[{} {} {} {}] ".format(n.x, n.y, n.g, n.g + n.h), end = "")
-        print(" ")
-        print(" ")
-        '''
+
         current_node = MinHeap.pop(Queue)
         # print("pop point {} {}".format(current_node.x, current_node.y))
         current_x = current_node.x
@@ -227,13 +221,6 @@ def traceback(map_node_info, s_goal):
 
     tracklist.add_front(ptr)
     return tracklist.next
-
-
-'''
-traceback function serves to record the current ideal path that the agent 
-estimate from the current position to the destination
-In the form of a linked list
-'''
 
 
 def final_trace(map_node_info, s_goal):
@@ -304,13 +291,13 @@ def main_A():
         visited_list.append(s_start)
         # print("push point {} {}".format(s_start.x, s_start.y))
 
-        '''
-        track record the current idea path from current start goal to the final goal
-        '''
+
+        # track record the current idea path from current start goal to the final goal
+
         ComputePath_A(maze, map_node_info, s_goal, openlist, open_closed_list, visited_list)
-        '''
-        update the hnew value
-        '''
+
+        # update the hnew value
+
         for i in visited_list:
             i.nh = g_goal - i.g
         track = traceback(map_node_info, s_goal)
@@ -318,27 +305,14 @@ def main_A():
             print("I cannot reach the target.")
             return
 
-        '''
-        while(ptr != None):
-            print('track is [{} {}]'.format(ptr.x, ptr.y), end=' ')
-            ptr = ptr.next
-        '''
         s_start = take_action(track, maze, map_node_info, path)
         # print("move to point [{} {}]".format(s_start.x, s_start.y))
         # print("current path end is [{} {}]".format(s_start.x, s_start.y))
     # print("goal point is [{} {}]".format(s_goal.x, s_goal.y))
 
-    '''
-        follow the tree pointers from s_goal to s_start, use a linkedlist to record
-        the path, and then move the agent to the goal stage
-    '''
     # final_track = final_trace(map_node_info, s_goal)
     ptr = path.next
-    '''
-    while ptr != None:
-        print("path is [{} {}]".format(ptr.x, ptr.y), end = " ")
-        ptr = ptr.next
-    '''
+
     destination = time.time()
     print(destination - origin)
 
@@ -349,13 +323,7 @@ def ComputePath_F(Maze, Mazeinfor, s_goal, Queue, open_closed_list):
     # check whether queue is empty
     while (len(Queue) > 0):
         # print(len(Queue))
-        '''
-        for i in range(len(Queue)):
-            n = Queue._MinHeap__heap[i]
-            print("[{} {} {} {}] ".format(n.x, n.y, n.g, n.g + n.h), end = "")
-        print(" ")
-        print(" ")
-        '''
+
         current_node = MinHeap.pop(Queue)
         # print("pop point {} {}".format(current_node.x, current_node.y))
         current_x = current_node.x
@@ -466,36 +434,20 @@ def main_F():
         Forward += 1
         # print("push point {} {}".format(s_start.x, s_start.y))
 
-        '''
-        track record the current idea path from current start goal to the final goal
-        '''
         ComputePath_F(maze, map_node_info, s_goal, openlist, open_closed_list)
         track = traceback(map_node_info, s_goal)
         if len(openlist) == 0:
             print("I cannot reach the target.")
             return
 
-        '''
-        while(ptr != None):
-            print('track is [{} {}]'.format(ptr.x, ptr.y), end=' ')
-            ptr = ptr.next
-        '''
         s_start = take_action(track, maze, map_node_info, path)
         # print("move to point [{} {}]".format(s_start.x, s_start.y))
         # print("current path end is [{} {}]".format(s_start.x, s_start.y))
     # print("goal point is [{} {}]".format(s_goal.x, s_goal.y))
 
-    '''
-        follow the tree pointers from s_goal to s_start, use a linkedlist to record
-        the path, and then move the agent to the goal stage
-    '''
     # final_track = final_trace(map_node_info, s_goal)
     ptr = path.next
-    '''
-    while ptr != None:
-        print("path is [{} {}]".format(ptr.x, ptr.y), end = " ")
-        ptr = ptr.next
-    '''
+
     destination = time.time()
     print("Time:", destination - origin)
 

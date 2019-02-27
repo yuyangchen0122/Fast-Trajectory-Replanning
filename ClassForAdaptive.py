@@ -9,13 +9,6 @@ class Cell:
         self.ifVisited = True
 
 
-'''
-this is the data type of each cell, which store the information of the location,
-g value, h value, and indirectly store the f value, an boolean value determine whether
-the cell is fully expanded or not
-'''
-
-
 class node:
     def __init__(self, block=False):
         self.x = 0
