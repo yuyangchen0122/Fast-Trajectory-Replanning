@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  27 FEB 2019 17:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  27 FEB 2019 19:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1575,36 +1575,79 @@ Underfull \hbox (badness 10000) in paragraph at lines 200--206
 
  []
 
-[4] (./RepeatedBackwardOutput.txt) [5]
-Underfull \hbox (badness 10000) in paragraph at lines 224--227
+[4] (./RepeatedBackwardOutput.txt)
+<forward.PNG, id=28, 726.715pt x 747.79375pt>
+File: forward.PNG Graphic file (type png)
+<use forward.PNG>
+Package pdftex.def Info: forward.PNG  used on input line 221.
+(pdftex.def)             Requested size: 508.69702pt x 523.45206pt.
+<forward2.PNG, id=30, 973.6375pt x 808.01875pt>
+File: forward2.PNG Graphic file (type png)
+<use forward2.PNG>
+Package pdftex.def Info: forward2.PNG  used on input line 222.
+(pdftex.def)             Requested size: 681.5416pt x 565.60927pt.
+<backward.PNG, id=31, 740.7675pt x 759.83875pt>
+File: backward.PNG Graphic file (type png)
+<use backward.PNG>
+Package pdftex.def Info: backward.PNG  used on input line 226.
+(pdftex.def)             Requested size: 518.5337pt x 531.8835pt.
+<backward2.PNG, id=32, 793.96625pt x 688.5725pt>
+File: backward2.PNG Graphic file (type png)
+<use backward2.PNG>
+Package pdftex.def Info: backward2.PNG  used on input line 227.
+(pdftex.def)             Requested size: 555.77258pt x 481.99745pt.
+<Output.PNG, id=33, 265.99374pt x 133.49875pt>
+File: Output.PNG Graphic file (type png)
+<use Output.PNG>
+Package pdftex.def Info: Output.PNG  used on input line 229.
+(pdftex.def)             Requested size: 186.19434pt x 93.44847pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--231
 
  []
 
-(./RepeatedForwardOutput.txt [6])
-Underfull \hbox (badness 10000) in paragraph at lines 236--242
 
- []
-
-(./RepeatedBackwardOutput.txt [7])
-Underfull \hbox (badness 10000) in paragraph at lines 257--262
+Underfull \hbox (badness 10000) in paragraph at lines 213--231
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 265--266
+Overfull \hbox (53.45291pt too wide) in paragraph at lines 213--231
+[]
+ []
+
+
+Overfull \hbox (226.29749pt too wide) in paragraph at lines 213--231
+[] 
+ []
+
+
+Overfull \hbox (63.2896pt too wide) in paragraph at lines 213--231
+[]
+ []
+
+
+Overfull \hbox (100.52847pt too wide) in paragraph at lines 213--231
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--231
 
  []
 
-LaTeX Font Info:    Try loading font information for TS1+XCharter-TLF on input 
-line 275.
-(/usr/local/texlive/2018/texmf-dist/tex/latex/xcharter/TS1XCharter-TLF.fd
-File: TS1XCharter-TLF.fd 2017/06/25 (autoinst) Font definitions for TS1/XCharte
-r-TLF.
-)
-LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 275.
+[5] [6 <./forward.PNG>] [7 <./forward2.PNG>] [8 <./backward.PNG>]
+Underfull \hbox (badness 10000) in paragraph at lines 231--235
 
-Underfull \hbox (badness 10000) in paragraph at lines 275--282
+ []
+
+[9 <./backward2.PNG> <./Output.PNG>]
+Underfull \hbox (badness 10000) in paragraph at lines 245--248
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 277--282
 
  []
 
@@ -1613,16 +1656,44 @@ Underfull \hbox (badness 10000) in paragraph at lines 285--286
 
  []
 
-[8] (./main.aux)
+LaTeX Font Info:    Try loading font information for TS1+XCharter-TLF on input 
+line 295.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/xcharter/TS1XCharter-TLF.fd
+File: TS1XCharter-TLF.fd 2017/06/25 (autoinst) Font definitions for TS1/XCharte
+r-TLF.
+)
+LaTeX Font Info:    Font shape `TS1/XCharter-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 295.
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--302
+
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 305--306
+
+ []
+
+
+Overfull \hbox (23.44363pt too wide) in paragraph at lines 324--325
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (99.02591pt too wide) in paragraph at lines 325--326
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[11] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 27194 strings out of 492649
- 518263 string characters out of 6129622
- 573053 words of memory out of 5000000
- 30626 multiletter control sequences out of 15000+600000
+ 27244 strings out of 492649
+ 518853 string characters out of 6129622
+ 585053 words of memory out of 5000000
+ 30674 multiletter control sequences out of 15000+600000
  596925 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,10n,74p,10488b,1458s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1632,17 +1703,18 @@ sr/local/texlive/2018/texmf-dist/fonts/enc/dvips/xcharter/xch_tuu2ww.enc}</usr/
 local/texlive/2018/texmf-dist/fonts/type1/public/xcharter/XCharter-Bold.pfb></u
 sr/local/texlive/2018/texmf-dist/fonts/type1/public/xcharter/XCharter-Roman.pfb
 ></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
-usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr
-/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/lo
-cal/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfit1000.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb></usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on main.pdf (8 pages, 167271 bytes).
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
+r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/l
+ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
+cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/loca
+l/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfit1000.pfb></usr/local/
+texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb></usr/local/te
+xlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on main.pdf (11 pages, 406086 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
+ 103 PDF objects out of 1000 (max. 8388607)
+ 68 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 38 words of extra memory for PDF output out of 10000 (max. 10000000)
 

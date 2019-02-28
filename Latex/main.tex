@@ -139,13 +139,12 @@ reason for the observation.
 \end{question}
 
 Answer: \newline
-\par After implementing tie-breaking in regards to the g-value, we ran our project 50 times for Repeated Forward A* and compared the average run time. In our A* code, implementation of tie-breaking begins around line 34 in "classinfor".
-Here are the run-times:
+\par First, we use the breaking tie as 100*100 as larger value, and then we set it as 50*50 as smaller value
 
 Repeated Forward A*
 
 \textbf{Choosing smaller g-value}
-Average run time: 5.512 s
+Average run time: 0.553608422583722
 
 \textbf{Choosing larger g-value}
 Average run time: 0.594 s
@@ -210,9 +209,28 @@ Answer: \newline
 \textbf{Repeated Backward A*: Average run time = 0.3506512123605479}
 \newline
 \textbf{Repeated Backward A*: Average expanded node = 176390.76087}
-\par Obersvation : After comparing the run time and the number of expanded node of Repeated Forward and Backward, we can easily find that Repeated Forward A* ran faster than Backward A.
+\par Obersvation : After comparing the run time and the number of expanded node of Repeated Forward and Backward, we can easily find that Repeated Forward A* ran faster than Backward A. But in this situation, the origin node and destination node are not the same.
 \newline
-Explanation: 
+By setting another python file to test, we set the origin node is same as the destination node. We use it to compare it again:
+\newline
+\newline
+\newline
+Repeated Forward:
+\newline
+\includegraphics[scale = 0.70]{forward.PNG}
+\includegraphics[scale = 0.70]{forward2.PNG}
+\newline
+Repeated Backward:
+\newline
+\includegraphics[scale = 0.70]{backward.PNG}
+\includegraphics[scale = 0.70]{backward2.PNG}
+\newline
+\includegraphics[scale = 0.70]{Output.PNG}
+\newline
+\par By comparing these two condition, we can easily say that the running time of Repeated Forward A* is obviously faster than the Repeated Backward A*.
+\newline
+\newline
+Explanation: Here, we know the repeated backward need to expand more cells, (83718 >> 11991). During one iteration of the A* search, we start the search from a place very close to the already detected vertical obstacle, then the A* search would find the break point vertically step by step, in which case each step starts over from the beginning to the next vertical point of the obstacle. For the 
 
 %----------------------------------------------------------------------------------------
 %	Part 4 - Heuristics in the Adaptive A*
@@ -230,25 +248,24 @@ leaves initially consistent h-values consistent even if action costs can increas
 %------------------------------------------------
 
 Answer: \newline
-\textbf{Repeated Forward A*:}
-{\obeylines\obeyspaces
-\texttt{
-\input{RepeatedForwardOutput.txt}
-}}
-\textbf{Repeated Forward A*: Average run time = 0.3089696089426676}
-\newline
-\textbf{Repeated Forward A*: Average expanded node = 3959.15555556}
-\newline
-\newline
-\textbf{Repeated Backward A*:}
-{\obeylines\obeyspaces
-\texttt{
-\input{RepeatedBackwardOutput.txt}
-}}
-\textbf{Repeated Backward A*: Average run time = 0.3506512123605479}
-\newline
-\textbf{Repeated Backward A*: Average expanded node = 176390.76087}
-\par 
+The heuristic function h is said to be consistent if 
+$$ \forall(n, a, n'): h(n) \leq c(n, a, n') + h(n'),$$
+where c(n, a, n') is the step cost for going from n to n' using action a.
+\par In this case, the step cost for each move is 1, therefore, $$c(n, a, n') + h(n') = h(n') + 1$$ , and h(n) is either h(n') + 1 or h(n') - 1, whenever the agent makes the next move. \par In the case of h(n) = h(n') + 1, h(n) = c(n, a, n') + h(n'). \par In the case of h(n) = h(n') - 1, h(n) < c(n, a, n') + h(n').
+\par Thus, the statement "the Manhattan distances are consistent in grid-worlds in which the agent can move only in the four main compass directions" is true.
+
+
+
+$$$$\par The second part asks us to prove that Adaptive A* leaves initially consistent h-values consistent even if action costs can increase. The heuristic function h is said to be consistent if 
+$$ \forall(n, a, n'): h(n) \leq c(n, a, n') + h(n'),$$ where c(n, a, n') is the step cost for going from n to n' using action a.
+\par For each Adaptive process, let the step cost for each move to be denoted by the variable A where A is an integer greater than 0, thus, $$c(n, a, n') + h(n') = h(n') + A$$ . 
+\par As is known, for Adaptive A* search, $h_{new} = g(s_{goal}) - g(s)$, and we need to prove:
+$$h_{new}(s) \leq h_{new}(s') + A,$$ 
+\par which is equal to:
+$$g(s_{goal}) - g(s) \leq g(s_{goa})) - g(s') + A$$
+$$ => g(s') \leq (s) + A,$$ 
+\par which is true.
+\par Thus, the statement "Adaptive A* leaves initially consistent h-values consistent even if action costs can increase" is true.
 
 %----------------------------------------------------------------------------------------
 %	Part 5 - Heuristics in the Adaptive A*
@@ -285,8 +302,47 @@ they can operate on within a memory limit of 4 MBytes.
 %------------------------------------------------
 
 Answer: \newline
-\par After implementing tie-breaking in regards to the g-value, we ran our project 50 times for Repeated Forward A* and compared the average run time. In our A* code, implementation of tie-breaking begins around line 34 in "classinfor".
-Here are the run-times:
+\par In regards to memory consumption, there are a couple of strategies that can be taken in order to reduce it. One method would be to use different variable types in order to save on some space. One simple example, for a variable that indicates whether a cell is blocked or not, this should be a simple boolean value rather than a numerical value. Another would be to limit the number of variables associated with our node class and store less information in general in each node. One of the most important ways is to examine our data structures and see if we may have implemented any other types to save on memory consumption. Another way is to avoid generating the entire map on the agent’s side, and only update the nodes that the agent observes. By storing the fog of war, we are unnecessarily using space when the agent can simply create the map as it walks along the grid-world. Our implementation does this but we can see other versions of this project unnecessarily doing this.
+Furthermore, we can even put the information of all fields inside of one field. For example, our old class cell is written as:
+
+\begin{lstlisting}
+class Cell:
+    def __init__(self, xPos, yPos, if_blocked, ifVisited=False):
+        self.x = xPos
+        self.y = yPos
+        self.ifBlocked = if_blocked
+        self.visited = ifVisited
+
+\end{lstlisting}
+
+
+For the sake of saving memory, our new class cell can be written as the following with get's methods:
+\begin{lstlisting}
+class Cell:
+	def __init__(self, xPos, yPos, if_blocked, ifVisited):
+    	# xPos is the 4-digit x-coordinate, yPos is the 4-digit y-coordinate
+        # if_blocked and ifVisited either 1 or 0 in order to indicate a boolean variable
+        self.xxxxyyyybv = xPos*1000000+yPos*100+if_blocked*10+ifVisited
+
+	def getx(self):
+        temp = self.xxxxyyyybv
+        return int(temp / 1000000)
+
+	def gety(self):
+        temp = self.xxxxyyyybv - getx(self) * 1000000
+        return int(temp / 100)
+
+	def getIfBlokced(self):
+        temp = self.xxxxyyyybv - getx(self) * 1000000 - gety(self) * 100
+        return int(temp /10)
+
+	def getIfVisited(self):
+        temp = self.xxxxyyyybv
+        return temp % 2
+\end{lstlisting}
+
+
+\par In this way, each object we create will just be an int type and an int type has a size of 4 bytes and we can do something similar to the class node. Let's take 4MB as 4e6 bytes, then the maximum number of grids we can have will be 4e6/4/2 = 500000. $\sqrt{500000}=707$, which means we will support a 707x707 grid-world for the worst case. For a 1001x1001 grid-world, it will take 1001*1001*4*2 = 8016008 bytes of memory which is roughly 8 MB of memory.
 %----------------------------------------------------------------------------------------
 
 \end{document}
