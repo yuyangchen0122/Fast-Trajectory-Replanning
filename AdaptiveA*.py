@@ -5,6 +5,7 @@ import heapq
 from ClassForAdaptive import *
 import time
 import random
+import gc
 
 
 maze_size = 101
@@ -39,29 +40,6 @@ def isValid(x, y):
     return ((x >= 0) and (x < maze_size) and (y >= 0) and (y < maze_size))
 
 
-'''
-update the surrounding node of the current node s
-It takes 3 parameters: 
-Mazeinfor: the information matrix
-current_node: the current stage node
-counter: the iteration time of the A* search
-Notice:
-currently I don't think we need to check counter, because I think there
-is no conditon in which g(succ(s, a) would be not bigger than g(s) + c(s, a)
-Please tell me if I am wrong, because I am probably wrong
-'''
-
-'''
-Important!!!!
-declaration about why don't need to set g value to infinity:
-because the cost always has a constant 1.
-The close list and the open list can be merge into one list: open_closed_list,
-because any node's g value that already in the open list don't need to be further updated
-if location (x, y) in open_closed_list has value true, it is either in the close list,
-or already in the open list which won't need to be modified.
-'''
-
-
 def update_neighbour_node(Maze, Mazeinfor, current_node, s_goal, Queue, open_closed_list, visited_list):
     current_x = current_node.x
     current_y = current_node.y
@@ -79,7 +57,7 @@ def update_neighbour_node(Maze, Mazeinfor, current_node, s_goal, Queue, open_clo
             neighbor_node.x = current_x + 1
             neighbor_node.y = current_y
             if (neighbor_node.nh == -1):
-                neighbor_node.h = Manhattan(neighbor_node, s_goal)
+                neighbor_node.h = Manhattan_distance(neighbor_node, s_goal)
             else:
                 neighbor_node.h = neighbor_node.nh
             MinHeap.push(Queue, neighbor_node)
@@ -100,7 +78,7 @@ def update_neighbour_node(Maze, Mazeinfor, current_node, s_goal, Queue, open_clo
             neighbor_node.x = current_x - 1
             neighbor_node.y = current_y
             if (neighbor_node.nh == -1):
-                neighbor_node.h = Manhattan(neighbor_node, s_goal)
+                neighbor_node.h = Manhattan_distance(neighbor_node, s_goal)
             else:
                 neighbor_node.h = neighbor_node.nh
             MinHeap.push(Queue, neighbor_node)
@@ -121,7 +99,7 @@ def update_neighbour_node(Maze, Mazeinfor, current_node, s_goal, Queue, open_clo
             neighbor_node.x = current_x
             neighbor_node.y = current_y - 1
             if (neighbor_node.nh == -1):
-                neighbor_node.h = Manhattan(neighbor_node, s_goal)
+                neighbor_node.h = Manhattan_distance(neighbor_node, s_goal)
             else:
                 neighbor_node.h = neighbor_node.nh
             MinHeap.push(Queue, neighbor_node)
@@ -141,7 +119,7 @@ def update_neighbour_node(Maze, Mazeinfor, current_node, s_goal, Queue, open_clo
             neighbor_node.x = current_x
             neighbor_node.y = current_y + 1
             if (neighbor_node.nh == -1):
-                neighbor_node.h = Manhattan(neighbor_node, s_goal)
+                neighbor_node.h = Manhattan_distance(neighbor_node, s_goal)
             else:
                 neighbor_node.h = neighbor_node.nh
             MinHeap.push(Queue, neighbor_node)
@@ -197,10 +175,10 @@ def detect(s, maze, Mazeinfor):
     return
 
 
-# Return false for unblocked, true for blocked
+# Return true for blocked, false for unblocked
 def random_blocked():
-    temp = np.random.choice([0, 1], 1, p=[0.3, 0.7])
-    if temp[0] == 1:
+    check = np.random.choice([0, 1], 1, p=[0.3, 0.7])
+    if check[0] == 1:
         return False
     return True
 
@@ -214,8 +192,8 @@ def makeGrid():
 def draw(maze, path_list, off=7):
     win = GraphicsWindow(maze_size * off * 1.2, maze_size * off * 1.2)
     canvas = win.canvas()
-    cell_size = off  # Height and width of checkerboard squares.
-    # start
+    cell_size = off
+    # Height and width of checkerboard squares.
 
     for i in range(maze_size):  # Note that i ranges from 0 through 7, inclusive.
         for j in range(maze_size):  # So does j.
@@ -244,7 +222,7 @@ def draw(maze, path_list, off=7):
     win.wait()
 
 
-def Manhattan(origin, goal):
+def Manhattan_distance(origin, goal):
     return (abs(goal.x - origin.x) + abs(goal.y - origin.y))
 
 
@@ -311,7 +289,6 @@ def take_action(track, maze, map_node_info, path):
                 track = track.next
             else:
                 break
-    # need to complete
     return position
 
 
@@ -331,7 +308,7 @@ def main():
     detect(s_start, maze, map_node_info)
     s_goal = map_node_info[target_x][target_y]
     print("Ending node is : " + str(target_x) + ", " + str(target_y))
-    s_start.nh = Manhattan(s_start, s_goal)
+    s_start.nh = Manhattan_distance(s_start, s_goal)
     path = point(-1, -1)
     while not (s_start.x == s_goal.x and s_start.y == s_goal.y):
         visited_list = []
@@ -345,7 +322,6 @@ def main():
         visited_list.append(s_start)
         # print("push point {} {}".format(s_start.x, s_start.y))
 
-
         # track record the current idea path from current start goal to the final goal
 
         ComputePath(maze, map_node_info, s_goal, openlist, open_closed_list, visited_list)
@@ -356,15 +332,11 @@ def main():
             i.nh = g_goal - i.g
         track = traceback(map_node_info, s_goal)
         if len(openlist) == 0:
-            print("I cannot reach the target.")
+            print("Cannot reach the target.")
             return
 
         s_start = take_action(track, maze, map_node_info, path)
-        # print("move to point [{} {}]".format(s_start.x, s_start.y))
-        # print("current path end is [{} {}]".format(s_start.x, s_start.y))
-    # print("goal point is [{} {}]".format(s_goal.x, s_goal.y))
 
-    # final_track = final_trace(map_node_info, s_goal)
     ptr = path.next
 
     destination = time.time()
@@ -377,5 +349,7 @@ def main():
 if __name__ == "__main__":
     g_goal = 0
     counter = 0
-    main()
-    print("Adaptive A* search expand node: {}".format(counter))
+    for i in range(0, 50):
+        main()
+        gc.collect()
+        print("Adaptive A* search expand node: {}".format(counter))

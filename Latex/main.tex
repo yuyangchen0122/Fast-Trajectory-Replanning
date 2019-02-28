@@ -139,42 +139,15 @@ reason for the observation.
 \end{question}
 
 Answer: \newline
-\par First, we use the breaking tie as 100*100 as larger value, and then we set it as 50*50 as smaller value
-
 Repeated Forward A*
 
 \textbf{Choosing smaller g-value}
-Average run time: 0.553608422583722
+Average run time: 5.515
 
 \textbf{Choosing larger g-value}
 Average run time: 0.594 s
+\par We observed that tie-breaking by the larger g-value proved to be much faster than the other one with smaller g-value. In general, when g1+h1 = g2+h2, we will choose the one with smaller h value. Here, it means the one with smaller h value will have larger g-value. The reason why we choose the one with larger g-value is that we know the g-value represents the cost of the path the agent has finished while the h-value is a prediction of the best case in the future which can potentially increase a lot. If we choose the one with larger h-value and smaller g-value, it will have a risk to increase the total cost. That's why the method of choosing the larger g-value is faster than the method of choosing the smaller g-value.
 
-
-We observed that tie-breaking by the larger g-value proved to be almost ten times faster than the other method. From the A* algorithm, f(s) = g(s) + h(s). In terms of the tie-breaking, we can conclude that having a bigger g-value also means having a smaller h-value. In our case, the g-value represents the cost of the path the agent has finished while the h-value is a prediction of the best case in the future which can potentially increase a lot. In other words, having a larger h-value gives the agent more risks of increasing its overall cost in the future. With the same f-values, the one with the larger g-value will more likely to finish its path with less cost to be added to its original prediction. It is also why the method of choosing the larger g-value is faster than the method of choosing the smaller g-value.
-
-% File contents
-\begin{file}[hello.py]
-\begin{lstlisting}[language=Python]
-#! /usr/bin/python
-
-import sys
-sys.stdout.write("Hello World!\n")
-\end{lstlisting}
-\end{file}
-
-Fusce eleifend porttitor arcu, id accumsan elit pharetra eget. Mauris luctus velit sit amet est sodales rhoncus. Donec cursus suscipit justo, sed tristique ipsum fermentum nec. Ut tortor ex, ullamcorper varius congue in, efficitur a tellus. Vivamus ut rutrum nisi. Phasellus sit amet enim efficitur, aliquam nulla id, lacinia mauris. Quisque viverra libero ac magna maximus efficitur. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum mollis eros in tellus fermentum, vitae tristique justo finibus. Sed quis vehicula nibh. Etiam nulla justo, pellentesque id sapien at, semper aliquam arcu. Integer at commodo arcu. Quisque dapibus ut lacus eget vulputate.
-
-% Command-line "screenshot"
-\begin{commandline}
-	\begin{verbatim}
-		$ chmod +x hello.py
-		$ ./hello.py
-
-		Hello World!
-	\end{verbatim}
-\end{commandline}
-
-Vestibulum sodales orci a nisi interdum tristique. In dictum vehicula dui, eget bibendum purus elementum eu. Pellentesque lobortis mattis mauris, non feugiat dolor vulputate a. Cras porttitor dapibus lacus at pulvinar. Praesent eu nunc et libero porttitor malesuada tempus quis massa. Aenean cursus ipsum a velit ultricies sagittis. Sed non leo ullamcorper, suscipit massa ut, pulvinar erat. Aliquam erat volutpat. Nulla non lacus vitae mi placerat tincidunt et ac diam. Aliquam tincidunt augue sem, ut vestibulum est volutpat eget. Suspendisse potenti. Integer condimentum, risus nec maximus elementum, lacus purus porta arcu, at ultrices diam nisl eget urna. Curabitur sollicitudin diam quis sollicitudin varius. Ut porta erat ornare laoreet euismod. In tincidunt purus dui, nec egestas dui convallis non. In vestibulum ipsum in dictum scelerisque.
 
 %----------------------------------------------------------------------------------------
 %	Part 3 - Forward vs. Backward
@@ -238,7 +211,7 @@ Explanation: Here, we know the repeated backward need to expand more cells, (837
 
 \section{Part 4 - Heuristics in the Adaptive A*}
 
-The project argues that “the Manhattan distances are consistent in
+The project argues that “the Manhattan_distance distances are consistent in
 gridworlds in which the agent can move only in the four main compass directions.” Prove that this is indeed the case.
 
 Furthermore, it is argued that “The h-values hnew(s) ... are not only admissible but also consistent.” Prove that Adaptive A*
@@ -252,7 +225,7 @@ The heuristic function h is said to be consistent if
 $$ \forall(n, a, n'): h(n) \leq c(n, a, n') + h(n'),$$
 where c(n, a, n') is the step cost for going from n to n' using action a.
 \par In this case, the step cost for each move is 1, therefore, $$c(n, a, n') + h(n') = h(n') + 1$$ , and h(n) is either h(n') + 1 or h(n') - 1, whenever the agent makes the next move. \par In the case of h(n) = h(n') + 1, h(n) = c(n, a, n') + h(n'). \par In the case of h(n) = h(n') - 1, h(n) < c(n, a, n') + h(n').
-\par Thus, the statement "the Manhattan distances are consistent in grid-worlds in which the agent can move only in the four main compass directions" is true.
+\par Thus, the statement "the Manhattan_distance distances are consistent in grid-worlds in which the agent can move only in the four main compass directions" is true.
 
 
 
@@ -283,7 +256,12 @@ g-values and remaining ties in an identical way, for example randomly.
 
 Answer: \newline
 
-\par 
+\par Repeated Forward A* = 0.35822288195292157
+       Adaptive A* = 0.46544274829
+       
+      Here, we can say that the repeated forward A* search is slightly faster than the Adaptive A* search. The reason why cause that is the Adaptive A*
+      Algorithm avoids certain path on the way and expands less cell each time, it has to traverse the whole recorded list whenever it updates its next 
+      possible path. That might be the reason that Adaptive A* only save a little bit time from updating its new path.
 
 %----------------------------------------------------------------------------------------
 %	Part 6 - Memory Issues
@@ -302,47 +280,10 @@ they can operate on within a memory limit of 4 MBytes.
 %------------------------------------------------
 
 Answer: \newline
-\par In regards to memory consumption, there are a couple of strategies that can be taken in order to reduce it. One method would be to use different variable types in order to save on some space. One simple example, for a variable that indicates whether a cell is blocked or not, this should be a simple boolean value rather than a numerical value. Another would be to limit the number of variables associated with our node class and store less information in general in each node. One of the most important ways is to examine our data structures and see if we may have implemented any other types to save on memory consumption. Another way is to avoid generating the entire map on the agent’s side, and only update the nodes that the agent observes. By storing the fog of war, we are unnecessarily using space when the agent can simply create the map as it walks along the grid-world. Our implementation does this but we can see other versions of this project unnecessarily doing this.
-Furthermore, we can even put the information of all fields inside of one field. For example, our old class cell is written as:
+\par The one that takes up the most memory is list. So we need to figure out a way to reduce the memory usage in our implementation. One way is to use a boolean value to check
+a cell is blocked or not. And the other way is using the single list rather than two list.
 
-\begin{lstlisting}
-class Cell:
-    def __init__(self, xPos, yPos, if_blocked, ifVisited=False):
-        self.x = xPos
-        self.y = yPos
-        self.ifBlocked = if_blocked
-        self.visited = ifVisited
-
-\end{lstlisting}
-
-
-For the sake of saving memory, our new class cell can be written as the following with get's methods:
-\begin{lstlisting}
-class Cell:
-	def __init__(self, xPos, yPos, if_blocked, ifVisited):
-    	# xPos is the 4-digit x-coordinate, yPos is the 4-digit y-coordinate
-        # if_blocked and ifVisited either 1 or 0 in order to indicate a boolean variable
-        self.xxxxyyyybv = xPos*1000000+yPos*100+if_blocked*10+ifVisited
-
-	def getx(self):
-        temp = self.xxxxyyyybv
-        return int(temp / 1000000)
-
-	def gety(self):
-        temp = self.xxxxyyyybv - getx(self) * 1000000
-        return int(temp / 100)
-
-	def getIfBlokced(self):
-        temp = self.xxxxyyyybv - getx(self) * 1000000 - gety(self) * 100
-        return int(temp /10)
-
-	def getIfVisited(self):
-        temp = self.xxxxyyyybv
-        return temp % 2
-\end{lstlisting}
-
-
-\par In this way, each object we create will just be an int type and an int type has a size of 4 bytes and we can do something similar to the class node. Let's take 4MB as 4e6 bytes, then the maximum number of grids we can have will be 4e6/4/2 = 500000. $\sqrt{500000}=707$, which means we will support a 707x707 grid-world for the worst case. For a 1001x1001 grid-world, it will take 1001*1001*4*2 = 8016008 bytes of memory which is roughly 8 MB of memory.
+\par Each object we create will just be an int type and an int type has a size of 4 bytes and we can do something similar to the class node. Let's take 4MB as 4e6 bytes, then the maximum number of grids we can have will be 4e6/4/2 = 500000. $\sqrt{500000}=707$, which means we will support a 707x707 grid-world for the worst case. For a 1001x1001 grid-world, it will take 1001*1001*4*2 = 8016008 bytes of memory which is roughly 8 MB of memory.
 %----------------------------------------------------------------------------------------
 
 \end{document}

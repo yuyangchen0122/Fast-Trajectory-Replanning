@@ -20,7 +20,7 @@ class node:
         self.next = None
         self.isBlocked = block
 
-    def __lt__(self, other, c=100 * 100):
+    def __lt__(self, other, c=200 * 200):
         # define a new rule to make comparison based on the f value of two cells
         return (self.g + self.h < other.g + other.h) or\
                (self.g + self.h == other.g + other.h and

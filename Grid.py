@@ -40,7 +40,7 @@ def makeGrid():
     return grid
 
 
-def draw(windowSize=1080, off=10):
+def draw(windowSize=1080, off=7):
     window = GraphicsWindow(windowSize, windowSize)
     canvas = window.canvas()
     offset_x = off  # Distance from left edge.

@@ -60,7 +60,7 @@ def update_neighbour_node(Maze, Mazeinfor, current_node, s_goal, Queue, open_clo
             neighbor_node.g = current_node.g + 1
             neighbor_node.x = current_x + 1
             neighbor_node.y = current_y
-            neighbor_node.h = Manhattan(neighbor_node, s_goal)
+            neighbor_node.h = Manhattan_distance(neighbor_node, s_goal)
             MinHeap.push(Queue, neighbor_node)
             counter += 1
     # print("push point {} {}".format(current_x + 1, current_y))
@@ -77,7 +77,7 @@ def update_neighbour_node(Maze, Mazeinfor, current_node, s_goal, Queue, open_clo
             neighbor_node.g = current_node.g + 1
             neighbor_node.x = current_x - 1
             neighbor_node.y = current_y
-            neighbor_node.h = Manhattan(neighbor_node, s_goal)
+            neighbor_node.h = Manhattan_distance(neighbor_node, s_goal)
             MinHeap.push(Queue, neighbor_node)
             counter += 1
 
@@ -94,7 +94,7 @@ def update_neighbour_node(Maze, Mazeinfor, current_node, s_goal, Queue, open_clo
             neighbor_node.g = current_node.g + 1
             neighbor_node.x = current_x
             neighbor_node.y = current_y - 1
-            neighbor_node.h = Manhattan(neighbor_node, s_goal)
+            neighbor_node.h = Manhattan_distance(neighbor_node, s_goal)
             MinHeap.push(Queue, neighbor_node)
             counter += 1
     # print("push point {} {}".format(current_x, current_y - 1))
@@ -110,7 +110,7 @@ def update_neighbour_node(Maze, Mazeinfor, current_node, s_goal, Queue, open_clo
             neighbor_node.g = current_node.g + 1
             neighbor_node.x = current_x
             neighbor_node.y = current_y + 1
-            neighbor_node.h = Manhattan(neighbor_node, s_goal)
+            neighbor_node.h = Manhattan_distance(neighbor_node, s_goal)
             MinHeap.push(Queue, neighbor_node)
             counter += 1
     # print("push point {} {}".format(current_x, current_y + 1))
@@ -166,8 +166,8 @@ def detect(s, maze, Mazeinfor):
 
 # Return false for unblocked, true for blocked
 def random_blocked():
-    temp = np.random.choice([0, 1], 1, p=[0.3, 0.7])
-    if temp[0] == 1:
+    check = np.random.choice([0, 1], 1, p=[0.3, 0.7])
+    if check[0] == 1:
         return False
     return True
 
@@ -212,7 +212,7 @@ def draw(maze, path_list, off=7):
     win.wait()
 
 
-def Manhattan(origin, goal):
+def Manhattan_distance(origin, goal):
     return (abs(goal.x - origin.x) + abs(goal.y - origin.y))
 
 
@@ -300,14 +300,12 @@ def main():
         s_start.search = counter
         s_goal.search = counter
         # push the start stage information to queue
-        s_goal.h = Manhattan(s_goal, s_start)
+        s_goal.h = Manhattan_distance(s_goal, s_start)
         MinHeap.push(openlist, s_goal)
-
-        # print("push point {} {}".format(s_start.x, s_start.y))
 
         ComputePath(maze, map_node_info, s_start, openlist, open_closed_list)
         if len(openlist) == 0:
-            print("I cannot reach the target.")
+            print("Cannot reach the target.")
             return "NaN"
 
 
@@ -321,7 +319,7 @@ def main():
 
     destination = time.time()
     print("Time:", destination - origin)
-    # draw(maze, path)
+    draw(maze, path)
 
     time1.valid_count += 1
     time1.average_time += (destination - origin)

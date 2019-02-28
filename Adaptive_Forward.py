@@ -38,12 +38,10 @@ def isValid(x, y):
     return ((x >= 0) and (x < maze_size) and (y >= 0) and (y < maze_size))
 
 
-def update_neighbour_node_A(Maze, Mazeinfor, current_node, s_goal, Queue, open_closed_list, visited_list):
+def update_neighbour_node_Adaptive(Maze, Mazeinfor, current_node, s_goal, Queue, open_closed_list, visited_list):
     global Adaptive
     current_x = current_node.x
     current_y = current_node.y
-
-
 
     # update right neighbor_node
 
@@ -58,13 +56,12 @@ def update_neighbour_node_A(Maze, Mazeinfor, current_node, s_goal, Queue, open_c
             neighbor_node.x = current_x + 1
             neighbor_node.y = current_y
             if (neighbor_node.nh == -1):
-                neighbor_node.h = Manhattan(neighbor_node, s_goal)
+                neighbor_node.h = Manhattan_distance(neighbor_node, s_goal)
             else:
                 neighbor_node.h = neighbor_node.nh
             MinHeap.push(Queue, neighbor_node)
             Adaptive += 1
             visited_list.append(neighbor_node)
-    # print("push point {} {}".format(current_x + 1, current_y))
 
     # update left neighbor_node
     if (isValid(current_x - 1, current_y) and (not open_closed_list[current_x - 1][current_y])):
@@ -79,14 +76,12 @@ def update_neighbour_node_A(Maze, Mazeinfor, current_node, s_goal, Queue, open_c
             neighbor_node.x = current_x - 1
             neighbor_node.y = current_y
             if (neighbor_node.nh == -1):
-                neighbor_node.h = Manhattan(neighbor_node, s_goal)
+                neighbor_node.h = Manhattan_distance(neighbor_node, s_goal)
             else:
                 neighbor_node.h = neighbor_node.nh
             MinHeap.push(Queue, neighbor_node)
             Adaptive += 1
             visited_list.append(neighbor_node)
-
-    # print("push point {} {}".format(current_x - 1, current_y))
 
     # update downward neighbor_node
     if (isValid(current_y, current_y - 1) and (not open_closed_list[current_x][current_y - 1])):
@@ -100,13 +95,12 @@ def update_neighbour_node_A(Maze, Mazeinfor, current_node, s_goal, Queue, open_c
             neighbor_node.x = current_y
             neighbor_node.y = current_y - 1
             if (neighbor_node.nh == -1):
-                neighbor_node.h = Manhattan(neighbor_node, s_goal)
+                neighbor_node.h = Manhattan_distance(neighbor_node, s_goal)
             else:
                 neighbor_node.h = neighbor_node.nh
             MinHeap.push(Queue, neighbor_node)
             Adaptive += 1
             visited_list.append(neighbor_node)
-    # print("push point {} {}".format(current_x, current_y - 1))
 
     # update upward neighbor_node
     if (isValid(current_y, current_y + 1) and (not open_closed_list[current_y][current_y + 1])):
@@ -120,7 +114,7 @@ def update_neighbour_node_A(Maze, Mazeinfor, current_node, s_goal, Queue, open_c
             neighbor_node.x = current_y
             neighbor_node.y = current_y + 1
             if (neighbor_node.nh == -1):
-                neighbor_node.h = Manhattan(neighbor_node, s_goal)
+                neighbor_node.h = Manhattan_distance(neighbor_node, s_goal)
             else:
                 neighbor_node.h = neighbor_node.nh
             MinHeap.push(Queue, neighbor_node)
@@ -136,11 +130,11 @@ def setup():
     for i in range(maze_size):
         for j in range(maze_size):
             # Initialize each object
-            if (starting_x and j == starting_y) or (i == target_x and j == target_y):
+            if (i == starting_x and j == starting_y) or (i == target_x and j == target_y):
                 # Cell(x coor, y coor, if_blocked, if_visited)
                 grid[i][j] = Cell(i, j, False, True)
             else:
-                grid[i][j] = Cell(i, j, randomization())
+                grid[i][j] = Cell(i, j, random_blocked())
     return grid
 
 
@@ -176,10 +170,10 @@ def detect(s, maze, Mazeinfor):
     return
 
 
-# Return false for unblocked, true for blocked
-def randomization():
-    temp = np.random.choice([0, 1], 1, p=[0.3, 0.7])
-    if temp[0] == 1:
+# Return true for blocked, false for unblocked
+def random_blocked():
+    check = np.random.choice([0, 1], 1, p=[0.3, 0.7])
+    if check[0] == 1:
         return False
     return True
 
@@ -189,11 +183,11 @@ def makeGrid():
     return grid
 
 
-def Manhattan(origin, goal):
-    return (abs(goal.x - origin.x) + abs(goal.y - origin.y))
+def Manhattan_distance(starting, goal):
+    return (abs(goal.x - starting.x) + abs(goal.y - starting.y))
 
 
-def ComputePath_A(Maze, Mazeinfor, s_goal, Queue, open_closed_list, visited_list):
+def ComputePath_Adaptive(Maze, Mazeinfor, s_goal, Queue, open_closed_list, visited_list):
     global g_goal
     # check whether queue is empty
     while (len(Queue) > 0):
@@ -208,7 +202,7 @@ def ComputePath_A(Maze, Mazeinfor, s_goal, Queue, open_closed_list, visited_list
             g_goal = current_node.g
             return
         # update s's neighbor_nodes, executing step 5 to 13
-        update_neighbour_node_A(Maze, Mazeinfor, current_node, s_goal, Queue, open_closed_list, visited_list)
+        update_neighbour_node_Adaptive(Maze, Mazeinfor, current_node, s_goal, Queue, open_closed_list, visited_list)
 
 
 def traceback(map_node_info, s_goal):
@@ -230,7 +224,6 @@ def final_trace(map_node_info, s_goal):
     while (not (ptr.x == 0 and ptr.y == 0)):
         tracklist.add_front(ptr)
         ptr = ptr.parent
-    # print("ptr is [{} {}]".format(ptr.x, ptr.y))
 
     tracklist.add_front(ptr)
     return tracklist.next
@@ -239,7 +232,6 @@ def final_trace(map_node_info, s_goal):
 def take_action(track, maze, map_node_info, path):
     x = track.x
     y = track.y
-    # print("check position [{} {}]".format(x, y))
     position = None
     if (map_node_info[x][y].g != 0):
         print("wrong origin point")
@@ -256,11 +248,10 @@ def take_action(track, maze, map_node_info, path):
                 track = track.next
             else:
                 break
-    # need to complete
     return position
 
 
-def main_A():
+def main_Adaptive():
     global g_goal
     global Adaptive
     origin = time.time()
@@ -277,7 +268,7 @@ def main_A():
     s_goal = map_node_info[target_x][target_y]
     print("Ending node is : " + str(target_x) + ", " + str(target_y))
 
-    s_start.nh = Manhattan(s_start, s_goal)
+    s_start.nh = Manhattan_distance(s_start, s_goal)
     path = point(-1, -1)
     while not (s_start.x == s_goal.x and s_start.y == s_goal.y):
         visited_list = []
@@ -289,12 +280,10 @@ def main_A():
         MinHeap.push(openlist, s_start)
         Adaptive += 1
         visited_list.append(s_start)
-        # print("push point {} {}".format(s_start.x, s_start.y))
-
 
         # track record the current idea path from current start goal to the final goal
 
-        ComputePath_A(maze, map_node_info, s_goal, openlist, open_closed_list, visited_list)
+        ComputePath_Adaptive(maze, map_node_info, s_goal, openlist, open_closed_list, visited_list)
 
         # update the hnew value
 
@@ -302,15 +291,11 @@ def main_A():
             i.nh = g_goal - i.g
         track = traceback(map_node_info, s_goal)
         if len(openlist) == 0:
-            print("I cannot reach the target.")
+            print("Cannot reach the target.")
             return
 
         s_start = take_action(track, maze, map_node_info, path)
-        # print("move to point [{} {}]".format(s_start.x, s_start.y))
-        # print("current path end is [{} {}]".format(s_start.x, s_start.y))
-    # print("goal point is [{} {}]".format(s_goal.x, s_goal.y))
 
-    # final_track = final_trace(map_node_info, s_goal)
     ptr = path.next
 
     destination = time.time()
@@ -319,7 +304,7 @@ def main_A():
     return
 
 
-def ComputePath_F(Maze, Mazeinfor, s_goal, Queue, open_closed_list):
+def ComputePath_Forward(Maze, Mazeinfor, s_goal, Queue, open_closed_list):
     # check whether queue is empty
     while (len(Queue) > 0):
         # print(len(Queue))
@@ -332,10 +317,10 @@ def ComputePath_F(Maze, Mazeinfor, s_goal, Queue, open_closed_list):
         if (current_node.x == s_goal.x and current_node.y == s_goal.y):
             return
         # update s's neighbor_nodes, executing step 5 to 13
-        update_neighbour_node_F(Maze, Mazeinfor, current_node, s_goal, Queue, open_closed_list)
+        update_neighbour_node_Forward(Maze, Mazeinfor, current_node, s_goal, Queue, open_closed_list)
 
 
-def update_neighbour_node_F(Maze, Mazeinfor, current_node, s_goal, Queue, open_closed_list):
+def update_neighbour_node_Forward(Maze, Mazeinfor, current_node, s_goal, Queue, open_closed_list):
     global Forward
     current_x = current_node.x
     current_y = current_node.y
@@ -352,7 +337,7 @@ def update_neighbour_node_F(Maze, Mazeinfor, current_node, s_goal, Queue, open_c
             neighbor_node.g = current_node.g + 1
             neighbor_node.x = current_x + 1
             neighbor_node.y = current_y
-            neighbor_node.h = Manhattan(neighbor_node, s_goal)
+            neighbor_node.h = Manhattan_distance(neighbor_node, s_goal)
             MinHeap.push(Queue, neighbor_node)
             Forward += 1
     # print("push point {} {}".format(current_x + 1, current_y))
@@ -369,7 +354,7 @@ def update_neighbour_node_F(Maze, Mazeinfor, current_node, s_goal, Queue, open_c
             neighbor_node.g = current_node.g + 1
             neighbor_node.x = current_x - 1
             neighbor_node.y = current_y
-            neighbor_node.h = Manhattan(neighbor_node, s_goal)
+            neighbor_node.h = Manhattan_distance(neighbor_node, s_goal)
             MinHeap.push(Queue, neighbor_node)
             Forward += 1
 
@@ -386,10 +371,9 @@ def update_neighbour_node_F(Maze, Mazeinfor, current_node, s_goal, Queue, open_c
             neighbor_node.g = current_node.g + 1
             neighbor_node.x = current_x
             neighbor_node.y = current_y - 1
-            neighbor_node.h = Manhattan(neighbor_node, s_goal)
+            neighbor_node.h = Manhattan_distance(neighbor_node, s_goal)
             MinHeap.push(Queue, neighbor_node)
             Forward += 1
-    # print("push point {} {}".format(current_x, current_y - 1))
 
     # update upward neighbor_node
     if (isValid(current_x, current_y + 1) and (not open_closed_list[current_x][current_y + 1])):
@@ -402,14 +386,13 @@ def update_neighbour_node_F(Maze, Mazeinfor, current_node, s_goal, Queue, open_c
             neighbor_node.g = current_node.g + 1
             neighbor_node.x = current_x
             neighbor_node.y = current_y + 1
-            neighbor_node.h = Manhattan(neighbor_node, s_goal)
+            neighbor_node.h = Manhattan_distance(neighbor_node, s_goal)
             MinHeap.push(Queue, neighbor_node)
             Forward += 1
-    # print("push point {} {}".format(current_x, current_y + 1))
     return
 
 
-def main_F():
+def main_Forward():
     global Forward
     origin = time.time()
     # generate a random foggy map
@@ -429,23 +412,18 @@ def main_F():
         open_closed_list = [[False for i in range(maze_size)] for j in range(maze_size)]
         s_start.g = 0
         # push the start stage information to queue
-        s_start.h = Manhattan(s_start, s_goal)
+        s_start.h = Manhattan_distance(s_start, s_goal)
         MinHeap.push(openlist, s_start)
         Forward += 1
-        # print("push point {} {}".format(s_start.x, s_start.y))
 
-        ComputePath_F(maze, map_node_info, s_goal, openlist, open_closed_list)
+        ComputePath_Forward(maze, map_node_info, s_goal, openlist, open_closed_list)
         track = traceback(map_node_info, s_goal)
         if len(openlist) == 0:
-            print("I cannot reach the target.")
+            print("Cannot reach the target.")
             return
 
         s_start = take_action(track, maze, map_node_info, path)
-        # print("move to point [{} {}]".format(s_start.x, s_start.y))
-        # print("current path end is [{} {}]".format(s_start.x, s_start.y))
-    # print("goal point is [{} {}]".format(s_goal.x, s_goal.y))
 
-    # final_track = final_trace(map_node_info, s_goal)
     ptr = path.next
 
     destination = time.time()
@@ -458,7 +436,7 @@ if __name__ == "__main__":
     g_goal = 0
     Forward = 0
     Adaptive = 0
-    main_F()
-    main_A()
+    main_Forward()
+    main_Adaptive()
     print("Forward is {}".format(Forward))
     print("Adaptive is {}".format(Adaptive))
